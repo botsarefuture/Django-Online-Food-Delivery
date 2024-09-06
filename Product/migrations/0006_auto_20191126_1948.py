@@ -10,13 +10,19 @@ import django_currentuser.middleware
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Product', '0005_order_order_by'),
+        ("Product", "0005_order_order_by"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='order_by',
-            field=django_currentuser.db.models.fields.CurrentUserField(blank=True, default=django_currentuser.middleware.get_current_authenticated_user, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="order",
+            name="order_by",
+            field=django_currentuser.db.models.fields.CurrentUserField(
+                blank=True,
+                default=django_currentuser.middleware.get_current_authenticated_user,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

@@ -7,13 +7,15 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Product', '0008_auto_20191126_1953'),
+        ("Product", "0008_auto_20191126_1953"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='product'),
+            model_name="order",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="product"
+            ),
         ),
     ]

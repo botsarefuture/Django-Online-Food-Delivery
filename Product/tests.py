@@ -50,19 +50,20 @@ def create_order(**kwargs):
 
 
 class ProductViewTest(unittest.TestCase):
-    '''
+    """
     Tests for Product
-    '''
+    """
+
     def setUp(self):
         self.client = Client()
 
     def test_list_product(self):
-        url = reverse('Product_product_list')
+        url = reverse("Product_product_list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_create_product(self):
-        url = reverse('Product_product_create')
+        url = reverse("Product_product_create")
         data = {
             "name": "name",
             "description": "description",
@@ -74,7 +75,12 @@ class ProductViewTest(unittest.TestCase):
 
     def test_detail_product(self):
         product = create_product()
-        url = reverse('Product_product_detail', args=[product.slug,])
+        url = reverse(
+            "Product_product_detail",
+            args=[
+                product.slug,
+            ],
+        )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
@@ -86,25 +92,31 @@ class ProductViewTest(unittest.TestCase):
             "stock": "stock",
             "price": "price",
         }
-        url = reverse('Product_product_update', args=[product.slug,])
+        url = reverse(
+            "Product_product_update",
+            args=[
+                product.slug,
+            ],
+        )
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)
 
 
 class OrderViewTest(unittest.TestCase):
-    '''
+    """
     Tests for Order
-    '''
+    """
+
     def setUp(self):
         self.client = Client()
 
     def test_list_order(self):
-        url = reverse('Product_order_list')
+        url = reverse("Product_order_list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_create_order(self):
-        url = reverse('Product_order_create')
+        url = reverse("Product_order_create")
         data = {
             "address": "address",
             "deliveried": "deliveried",
@@ -116,7 +128,12 @@ class OrderViewTest(unittest.TestCase):
 
     def test_detail_order(self):
         order = create_order()
-        url = reverse('Product_order_detail', args=[order.slug,])
+        url = reverse(
+            "Product_order_detail",
+            args=[
+                order.slug,
+            ],
+        )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
@@ -128,8 +145,11 @@ class OrderViewTest(unittest.TestCase):
             "deliveried_at": "deliveried_at",
             "product": create_django_contrib_auth_models_user().pk,
         }
-        url = reverse('Product_order_update', args=[order.slug,])
+        url = reverse(
+            "Product_order_update",
+            args=[
+                order.slug,
+            ],
+        )
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)
-
-

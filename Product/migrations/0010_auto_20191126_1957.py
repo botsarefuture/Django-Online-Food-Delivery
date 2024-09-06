@@ -7,19 +7,21 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Product', '0009_auto_20191126_1955'),
+        ("Product", "0009_auto_20191126_1955"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='order',
-            name='name',
-            field=models.CharField(default='test', max_length=255),
+            model_name="order",
+            name="name",
+            field=models.CharField(default="test", max_length=255),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='order',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from='name'),
+            model_name="order",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from="name"
+            ),
         ),
     ]
